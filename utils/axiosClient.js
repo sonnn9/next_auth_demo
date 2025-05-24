@@ -1,8 +1,9 @@
+// utils/axiosClient.js
 import axios from 'axios';
 import { store } from '../store';
 import { fetchRefreshToken } from '../store/authSlice';
 
-const client = axios.create();
+const client = axios.create({ withCredentials: true });
 
 client.interceptors.request.use(config => {
   const token = store.getState().auth.token;
